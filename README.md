@@ -50,4 +50,10 @@ npm run dev
 
 The `app.ts` loads the express app with the basic middlewares provided, while the `index.ts` in src directory starts the express server on a designated port on a local machine.
 
+Keep the app & index as seperate stand-alone files to run the test on app server & listener separately.
+
 The `api/index.ts` holds all the routes & `middleware` in src holds the custom middlewares like error handling & not-found cases.
+
+Stick to eith MVC architecture or a feature-based structure. For the latter, all the functions regarding a feature are stacked in a directory. src/api/todo directory
+
+Create a route & data model for the todo, and write a test case for the expected output from the todo routes. Create the routes & their corresponding handler function before writing their test cases. With each route defined, their corresponding test cases complicates.
