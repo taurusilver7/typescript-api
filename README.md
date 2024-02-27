@@ -57,3 +57,5 @@ The `api/index.ts` holds all the routes & `middleware` in src holds the custom m
 Stick to eith MVC architecture or a feature-based structure. For the latter, all the functions regarding a feature are stacked in a directory. src/api/todo directory
 
 Create a route & data model for the todo, and write a test case for the expected output from the todo routes. Create the routes & their corresponding handler function before writing their test cases. With each route defined, their corresponding test cases complicates.
+
+Setup the database in the src directory. Create a mongo client instance for the database using the connection string from the env variable.
