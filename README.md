@@ -59,3 +59,5 @@ Stick to eith MVC architecture or a feature-based structure. For the latter, all
 Create a route & data model for the todo, and write a test case for the expected output from the todo routes. Create the routes & their corresponding handler function before writing their test cases. With each route defined, their corresponding test cases complicates.
 
 Setup the database in the src directory. Create a mongo client instance for the database using the connection string from the env variable.
+
+Separate the async handler function in the routes to a controller, corresponding to the route.gi
