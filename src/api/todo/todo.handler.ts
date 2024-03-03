@@ -25,7 +25,7 @@ export async function createOne(
 	try {
 		const validateResult = await Todo.parse(req.body);
 		const insertResult = await Todo.insertOne(validateResult);
-      res.json(insertResult);
+		res.json(insertResult);
 	} catch (error) {
 		next(error);
 	}
