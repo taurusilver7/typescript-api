@@ -60,4 +60,6 @@ Create a route & data model for the todo, and write a test case for the expected
 
 Setup the database in the src directory. Create a mongo client instance for the database using the connection string from the env variable.
 
-Separate the async handler function in the routes to a controller, corresponding to the route.gi
+Separate the async handler function in the routes to a controller, corresponding to the route.
+
+The server usually has the error handler as the last register in its middleware chain. The error handler is called whenever a controller function calls for a next method with an error.
