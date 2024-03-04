@@ -1,7 +1,8 @@
 // Controller function for a corresponding todo route.
 import { NextFunction, Request, Response } from "express";
 import { TodoWithId, Todos, Todo } from "./todo.model";
-import { InsertOneResult, ObjectId } from "mongodb";
+import { ObjectId } from "mongodb";
+import { ParamsWithId } from "../../interfaces/ParamsWithId";
 
 export async function findAll(
 	req: Request,
@@ -9,8 +10,7 @@ export async function findAll(
 	next: NextFunction
 ) {
 	try {
-		const result = await Todos.find();
-		const todos = await result.toArray();
+		const todos = await Todos.find().toArray();
 		res.json(todos);
 	} catch (error) {
 		next(error);
@@ -23,8 +23,8 @@ export async function createOne(
 	next: NextFunction
 ) {
 	try {
-		const validateResult = await Todo.parse(req.body);
-		const insertResult = await Todo.insertOne(validateResult);
+		const insertResult = await Todo.insertOne(req.body);
+		if (!insertResult.acknowledged) throw new Error("Error inserting Todo");
 		res.status(200);
 		res.json({
 			_id: insertResult.insertdId,
@@ -36,7 +36,7 @@ export async function createOne(
 }
 
 export async function findOne(
-	req: Request<TodoWithId, {}>,
+	req: Request<ParamsWithId, TodoWithId, {}>,
 	res: Response<TodoWithId>,
 	next: NextFunction
 ) {
