@@ -4,7 +4,7 @@ import { WithId } from "mongodb";
 
 export const Todo = z.object({
 	content: z.string().min(1),
-	done: z.boolean().default(false),
+	done: z.boolean(),
 });
 
 export type Todo = z.infer<typeof Todo>;
