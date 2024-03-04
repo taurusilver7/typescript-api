@@ -7,8 +7,10 @@ import {Todo} from "./todo.model";
 const router = Router();
 
 router.get("/", TodoHandler.findAll);
-router.post("/", TodoHandler.createOne);
+router.post("/", validateRequest({body: Todo}), TodoHandler.createOne);
 
 router.get("/:id", validateRequest({params: ParamsWithId,}), TodoHandler.findOne);
+
+router.put("/:id", validateRequest({params: ParamsWithId, body: Todo}), TodoHandler.updateOne)
 
 export default router;
